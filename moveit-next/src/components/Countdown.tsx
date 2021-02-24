@@ -1,4 +1,4 @@
-import { time } from 'console';
+
 import { useEffect, useState } from 'react';
 import styles from '../styles/components/Countdown.module.css';
 
