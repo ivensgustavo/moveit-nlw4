@@ -39,7 +39,7 @@ body {
 }
 
 body, input, textarea, button {
-    font: 400 1rem 'Inter' sans-serif;
+    font: 400 1rem 'Inter', sans-serif;
 }
 
 button {
@@ -51,13 +51,3 @@ a {
     text-decoration: none;
 }
 
-.container {
-    height: 100vh;
-    max-width: 998px;
-    margin: 0 auto;
-    padding: 2.5rem 2rem;
-
-    /* para o conteúdo ficar um a abaixo do outro*/
-    display: flex;
-    flex-direction: column;
-}
