@@ -6,7 +6,10 @@ export function Profile() {
             <img src="https://avatars.githubusercontent.com/u/58297601?v=4" alt="Gustavo Ivens" />
             <div>
                 <strong>Gustavo Ivens</strong>
-                <p>Level 1</p>
+                <p>
+                    <img src="icons/level.svg" alt="Icon Level" />
+                    Level 1
+                </p>
             </div>
         </div>
     );
