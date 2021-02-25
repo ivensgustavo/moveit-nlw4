@@ -1,0 +1,19 @@
+.container {
+    height: 100vh;
+    max-width: 998px;
+    margin: 0 auto;
+    padding: 2.5rem 2rem;
+
+    /* para o conteúdo ficar um a abaixo do outro*/
+    display: flex;
+    flex-direction: column;
+}
+
+.container section {
+    flex: 1;
+
+    display: grid;/*Pra fazer ficar em colunas*/
+    grid-template-columns: 1fr 1fr; /*Duas colunas com o mesmo tamanho*/
+    gap: 6.35rem; /*Espaço entre as duas colunas*/
+    align-content: center; /*Todo o conteúdo vai pro centro verticalmente*/
+}
