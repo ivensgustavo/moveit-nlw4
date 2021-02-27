@@ -11,6 +11,7 @@
 
 .container section {
     flex: 1;
+    padding-top: 1.5rem;
 
     display: grid;/*Pra fazer ficar em colunas*/
     grid-template-columns: 1fr 1fr; /*Duas colunas com o mesmo tamanho*/
