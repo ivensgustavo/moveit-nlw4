@@ -16,6 +16,7 @@ interface ChallengesContextData {
   levelUp: () => void;
   startNewChallenge: () => void;
   resetChallenge: () => void;
+  completeChallenge: () => void;
 }
 
 interface ChallengesProviderProps {
@@ -48,6 +49,27 @@ export function ChallengesContextProvider({ children }: ChallengesProviderProps)
     setActiveChallenge(null);
   }
 
+  function completeChallenge() {
+    if (!activeChallenge) {
+      return;
+    }
+
+    const { amount } = activeChallenge;
+
+    let finalExperience = currenteExperience + amount;
+
+    if (finalExperience >= experienceToNextLevel) {
+      finalExperience = finalExperience - experienceToNextLevel;
+      levelUp();
+    }
+
+    setCurrenteExperience(finalExperience);
+    //Completou um desafio então esse desafio tem que desaparecer
+    setActiveChallenge(null);
+    setChallengesCompleted(challengesCompleted + 1);
+
+  }
+
   return (
     <ChallengesContext.Provider value={{
       level,
@@ -57,7 +79,8 @@ export function ChallengesContextProvider({ children }: ChallengesProviderProps)
       activeChallenge,
       levelUp,
       startNewChallenge,
-      resetChallenge
+      resetChallenge,
+      completeChallenge
     }}>
       {children}
     </ChallengesContext.Provider>

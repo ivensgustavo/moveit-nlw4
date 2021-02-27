@@ -1,45 +1,20 @@
 import { useContext, useEffect, useState } from 'react';
 import { ChallengesContext } from '../contexts/ChallengesContext';
+import { CountdownContext } from '../contexts/CountdownContext';
 import styles from '../styles/components/Countdown.module.css';
 
-let countdownTimeout: NodeJS.Timeout;
-
 export function Countdown() {
-  const { startNewChallenge } = useContext(ChallengesContext);
-
-  const initialTimeInSeconds = 0.1 * 60;
-  const [timeInSeconds, setTimeInSeconds] = useState(initialTimeInSeconds);
-  const [isActive, setIsActive] = useState(false);
-  const [hasFinished, setHasFinished] = useState(false);
-
-  const minutes = Math.floor(timeInSeconds / 60);
-  const seconds = timeInSeconds % 60;
+  const {
+    minutes,
+    seconds,
+    hasFinished,
+    isActive,
+    startCountdown,
+    resetCountdown } = useContext(CountdownContext);
 
   //Quando o minuto não for um número de 2 dígitos, adicione um 0 na frente
   const [leftMinute, rightMinute] = String(minutes).padStart(2, '0').split('');
   const [leftSecond, rightSecond] = String(seconds).padStart(2, '0').split('');
-
-  function startCountdown() {
-    setIsActive(true);
-  }
-
-  function resetCountdown() {
-    clearTimeout(countdownTimeout) //Faz com que não espere mais um segundo para parar
-    setIsActive(false);
-    setTimeInSeconds(initialTimeInSeconds);
-  }
-
-  useEffect(() => {
-    if (isActive && timeInSeconds > 0) {
-      countdownTimeout = setTimeout(() => {
-        setTimeInSeconds(timeInSeconds - 1);
-      }, 1000);
-    } else if (isActive && timeInSeconds === 0) {
-      setHasFinished(true);
-      setIsActive(false);
-      startNewChallenge();
-    }
-  }, [isActive, timeInSeconds])
 
   return (
     <div>
