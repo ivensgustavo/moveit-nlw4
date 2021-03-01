@@ -15,6 +15,7 @@ export function Countdown() {
   const minutes = Math.floor(timeInSeconds / 60);
   const seconds = timeInSeconds % 60;
 
+  //Quando o minuto não for um número de 2 dígitos, adicione um 0 na frente
   const [leftMinute, rightMinute] = String(minutes).padStart(2, '0').split('');
   const [leftSecond, rightSecond] = String(seconds).padStart(2, '0').split('');
 
